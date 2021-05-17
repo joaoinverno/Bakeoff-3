@@ -6,7 +6,7 @@
 // p5.js reference: https://p5js.org/reference/
 
 // Database (CHANGE THESE!)
-const GROUP_NUMBER   = 0;      // add your group number here as an integer (e.g., 2, 3)
+const GROUP_NUMBER   = 45;      // add your group number here as an integer (e.g., 2, 3)
 const BAKE_OFF_DAY   = false;  // set to 'true' before sharing during the simulation and bake-off days
 
 let PPI, PPCM;                 // pixel density (DO NOT CHANGE!)
@@ -42,6 +42,8 @@ let database;                  // Firebase DB
 let leftArrow, rightArrow;     // holds the left and right UI images for our basic 2D keyboard   
 let ARROW_SIZE;                // UI button size
 let current_letter = 'a';      // current char being displayed on our basic 2D keyboard (starts with 'a')
+let vowels = "aeiou";
+let consonants = "bcdfghjklmnpqrstvwxyz";
 
 // Runs once before the setup() and loads our data (images, phrases)
 function preload()
@@ -56,6 +58,9 @@ function preload()
   // Loads UI elements for our basic keyboard
   leftArrow = loadImage("data/left.png");
   rightArrow = loadImage("data/right.png");
+
+  spaceBar = loadImage("data/space-bar-1.png");
+  backspace = loadImage("data/backspace.png");
 }
 
 // Runs once at the start
@@ -108,13 +113,15 @@ function draw2Dkeyboard()
   // Writes the current letter
   textFont("Arial", 24);
   fill(0);
-  text("" + current_letter, width/2, height/2); 
+  //text("" + current_letter, width/2, height/2); 
   
   // Draws and the left and right arrow buttons
   noFill();
-  imageMode(CORNER);
-  image(leftArrow, width/2 - ARROW_SIZE, height/2, ARROW_SIZE, ARROW_SIZE);
-  image(rightArrow, width/2, height/2, ARROW_SIZE, ARROW_SIZE);  
+  imageMode(CENTER);
+  //image(leftArrow, width/2 - ARROW_SIZE, height/2, ARROW_SIZE, ARROW_SIZE);
+  //image(rightArrow, width/2, height/2, ARROW_SIZE, ARROW_SIZE);
+  image(spaceBar, width/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3);
+  image(backspace, width/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9);  
 }
 
 // Evoked when the mouse button was pressed
@@ -126,7 +133,7 @@ function mousePressed()
     // Check if mouse click happened within the touch input area
     if(mouseClickWithin(width/2 - 2.0*PPCM, height/2 - 1.0*PPCM, 4.0*PPCM, 3.0*PPCM))  
     {      
-      // Check if mouse click was on left arrow (2D keyboard)
+      /*// Check if mouse click was on left arrow (2D keyboard)
       if (mouseClickWithin(width/2 - ARROW_SIZE, height/2, ARROW_SIZE, ARROW_SIZE))
       {
         current_letter = getPreviousChar(current_letter);
@@ -145,6 +152,14 @@ function mousePressed()
         else if (current_letter == '`' && currently_typed.length > 0)               // if `, treat that as delete
           currently_typed = currently_typed.substring(0, currently_typed.length - 1);
         else if (current_letter != '`') currently_typed += current_letter;          // if not any of the above cases, add the current letter to the entered phrase
+      }*/
+      if (mouseClickWithin(width/2 - (PPCM * 1.3)/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3))
+      {
+        currently_typed += " ";
+      }
+      else if (mouseClickWithin(width/2 - (PPCM * 0.9)/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9))
+      {
+        currently_typed = currently_typed.substring(0, currently_typed.length - 1);
       }
     }
     
