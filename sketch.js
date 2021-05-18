@@ -119,7 +119,7 @@ function draw2Dkeyboard()
 {
 
   // Writes the current letter
-  textFont("Arial", 36);
+  textFont("Arial", 0.9 * PPCM);
   fill(0);
   noStroke();
   text(current_vowel , width/2 - 1.3 * PPCM, height/2 + 0.2 * PPCM);
