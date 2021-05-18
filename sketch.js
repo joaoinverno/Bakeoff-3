@@ -41,9 +41,14 @@ let database;                  // Firebase DB
 // 2D Keyboard UI
 let leftArrow, rightArrow;     // holds the left and right UI images for our basic 2D keyboard   
 let ARROW_SIZE;                // UI button size
-let current_letter = 'a';      // current char being displayed on our basic 2D keyboard (starts with 'a')
 let vowels = "aeiou";
 let consonants = "bcdfghjklmnpqrstvwxyz";
+let indexVowels = 0;
+let indexConsonants = 0;
+let current_vowel = vowels[indexVowels];
+let next_vowel = vowels[indexVowels+1];
+let current_consonant = consonants[indexConsonants];
+let next_consonant = consonants[indexConsonants+1];
 
 // Runs once before the setup() and loads our data (images, phrases)
 function preload()
@@ -61,6 +66,8 @@ function preload()
 
   spaceBar = loadImage("data/space-bar-1.png");
   backspace = loadImage("data/backspace.png");
+  upArrow = loadImage("data/upArrow.png");
+  downArrow = loadImage("data/downArrow.png");
 }
 
 // Runs once at the start
@@ -110,18 +117,26 @@ function draw()
 // Draws 2D keyboard UI (current letter and left and right arrows)
 function draw2Dkeyboard()
 {
+
   // Writes the current letter
-  textFont("Arial", 24);
+  textFont("Arial", 36);
   fill(0);
-  //text("" + current_letter, width/2, height/2); 
+  noStroke();
+  text(current_vowel , width/2 - 1.3 * PPCM, height/2 + 0.2 * PPCM);
+  text(next_vowel , width/2 - 1.3 * PPCM, height/2 + 1.2 * PPCM);
+  text(current_consonant , width/2 + 1.3 * PPCM, height/2 + 0.2 * PPCM);
+  text(next_consonant , width/2 + 1.3 * PPCM, height/2 + 1.2 * PPCM);
   
   // Draws and the left and right arrow buttons
   noFill();
   imageMode(CENTER);
-  //image(leftArrow, width/2 - ARROW_SIZE, height/2, ARROW_SIZE, ARROW_SIZE);
-  //image(rightArrow, width/2, height/2, ARROW_SIZE, ARROW_SIZE);
+
   image(spaceBar, width/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3);
-  image(backspace, width/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9);  
+  image(backspace, width/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9);
+  image(upArrow, width/2 - 1.3 * PPCM, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
+  image(downArrow, width/2 - 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
+  image(upArrow, width/2 + 1.3 * PPCM, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
+  image(downArrow, width/2 + 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6); 
 }
 
 // Evoked when the mouse button was pressed
@@ -160,6 +175,50 @@ function mousePressed()
       else if (mouseClickWithin(width/2 - (PPCM * 0.9)/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9))
       {
         currently_typed = currently_typed.substring(0, currently_typed.length - 1);
+      }
+      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.6)/2, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
+      {
+        if (indexVowels == 0) indexVowels = 4;
+        else indexVowels--;
+        current_vowel = vowels[indexVowels];
+        if (indexVowels == 4) next_vowel = 'a';
+        else next_vowel = vowels[indexVowels+1];
+      }
+      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.6)/2, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
+      {
+        if (indexVowels == 4) indexVowels = 0;
+        else indexVowels++;
+        current_vowel = vowels[indexVowels];
+        if (indexVowels == 4) next_vowel = 'a';
+        else next_vowel = vowels[indexVowels+1];
+      }
+      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.6)/2, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
+      {
+        if (indexConsonants == 0) indexConsonants = 20;
+        else indexConsonants--;
+        current_consonant = consonants[indexConsonants];
+        if (indexConsonants == 20) next_consonant = 'b';
+        else next_consonant = consonants[indexConsonants+1];
+      }
+      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.6)/2, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
+      {
+        if (indexConsonants == 20) indexConsonants = 0;
+        else indexConsonants++;
+        current_consonant = consonants[indexConsonants];
+        if (indexConsonants == 20) next_consonant = 'b';
+        else next_consonant = consonants[indexConsonants+1];
+      }
+      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 0.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
+        currently_typed += current_vowel;
+      }
+      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 1.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
+        currently_typed += next_vowel;
+      }
+      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 0.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
+        currently_typed += current_consonant;
+      }
+      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 1.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
+        currently_typed += next_consonant;
       }
     }
     
