@@ -39,7 +39,7 @@ let errors           = 0;      // a running total of the number of errors (when 
 let database;                  // Firebase DB
 
 // 2D Keyboard UI
-let leftArrow, rightArrow;     // holds the left and right UI images for our basic 2D keyboard   
+let leftArrow, rightArrow, spaceBar, backspace, upArrow, downArrow;     // holds the left and right UI images for our basic 2D keyboard   
 let ARROW_SIZE;                // UI button size
 let vowels = "aeiou";
 let consonants = "bcdfghjklmnpqrstvwxyz";
@@ -99,9 +99,9 @@ function draw()
     fill(125);
     rect(width/2 - 2.0*PPCM, height/2 - 2.0*PPCM, 4.0*PPCM, 1.0*PPCM);
     textAlign(CENTER); 
-    textFont("Arial", 16);
+    textFont("Arial", 0.32 * PPCM);
     fill(0);
-    text("NOT INTERACTIVE", width/2, height/2 - 1.3 * PPCM);
+    text("VOWELS CONSONANTS", width/2, height/2 - 1.3 * PPCM);
 
     // Draws the touch input area (4x3cm) -- DO NOT CHANGE SIZE!
     stroke(0, 255, 0);
@@ -148,26 +148,6 @@ function mousePressed()
     // Check if mouse click happened within the touch input area
     if(mouseClickWithin(width/2 - 2.0*PPCM, height/2 - 1.0*PPCM, 4.0*PPCM, 3.0*PPCM))  
     {      
-      /*// Check if mouse click was on left arrow (2D keyboard)
-      if (mouseClickWithin(width/2 - ARROW_SIZE, height/2, ARROW_SIZE, ARROW_SIZE))
-      {
-        current_letter = getPreviousChar(current_letter);
-        if (current_letter.charCodeAt(0) < '_'.charCodeAt(0)) current_letter = 'z';  // wrap around to z
-      }
-      // Check if mouse click was on right arrow (2D keyboard)
-      else if (mouseClickWithin(width/2, height/2, ARROW_SIZE, ARROW_SIZE))
-      {
-        current_letter = getNextChar(current_letter);
-        if (current_letter.charCodeAt(0) > 'z'.charCodeAt(0)) current_letter = '_'; // wrap back to space (i.e., the underscore)
-      }
-      else
-      {
-        // Click in whitespace indicates a character input (2D keyboard)
-        if (current_letter == '_') currently_typed += " ";                          // if underscore, consider that a space bar
-        else if (current_letter == '`' && currently_typed.length > 0)               // if `, treat that as delete
-          currently_typed = currently_typed.substring(0, currently_typed.length - 1);
-        else if (current_letter != '`') currently_typed += current_letter;          // if not any of the above cases, add the current letter to the entered phrase
-      }*/
       if (mouseClickWithin(width/2 - (PPCM * 1.3)/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3))
       {
         currently_typed += " ";
