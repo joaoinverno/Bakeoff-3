@@ -298,6 +298,8 @@ function printAndSavePerformance()
   let wpm_w_penalty    = max((wpm - penalty),0);                                   // minus because higher WPM is better: NET WPM
   let timestamp        = day() + "/" + month() + "/" + year() + "  " + hour() + ":" + minute() + ":" + second();
   
+  CPS = letters_entered / ((attempt_end_time - attempt_start_time) / 1000);
+  
   background(color(0,0,0));    // clears screen
   cursor();                    // shows the cursor again
   
@@ -319,6 +321,7 @@ function printAndSavePerformance()
   text("Freebie errors: " + freebie_errors.toFixed(2), width / 2, height / 2 + h+40);
   text("Penalty: " + penalty.toFixed(2), width / 2, height / 2 + h+60);
   text("WPM with penalty: " + wpm_w_penalty.toFixed(2), width / 2, height / 2 + h+80);
+  text("CPS: " + CPS.toFixed(2), width / 2, height / 2 + h+160);
 
   // Saves results (DO NOT CHANGE!)
   let attempt_data = 
