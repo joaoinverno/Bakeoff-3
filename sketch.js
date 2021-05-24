@@ -118,11 +118,32 @@ function draw()
 function draw2Dkeyboard()
 {
 
-  // Writes the current letter
-  textFont("Arial", 0.9 * PPCM);
-  fill(0);
   noStroke();
-  text(current_vowel , width/2 - 1.3 * PPCM, height/2 + 0.2 * PPCM);
+  stroke(0);
+  strokeWeight(4);
+  line(width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM, width/2 - 2*PPCM + (4/3)*PPCM, height/2 + 2*PPCM - (3/4)*PPCM);
+  line(width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM, width/2 - 2*PPCM + (8/3)*PPCM, height/2 + 2*PPCM - (3/4)*PPCM);
+  line(width/2, height/2 - 1*PPCM + (9/4)*PPCM, width/2, height/2 + 2*PPCM);
+  line(width/2 - 2*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, width/2 + 2*PPCM, height/2 - 1*PPCM + (3/4)*PPCM);
+  line(width/2 - 2*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, width/2 + 2*PPCM, height/2 - 1*PPCM + (6/4)*PPCM);
+  line(width/2 - 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM, width/2 + 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM);
+  noStroke();
+  // Writes the current letter
+  textFont("Arial", 0.4 * PPCM);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  text(" ABC", width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" DEF", width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" GHI", width/2 - 2*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" JKL", width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" MNO", width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" PQRS", width/2 - 2*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" TUV", width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" WXYZ", width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM);
+  text(" SPACE", width/2 - 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM);
+  textSize(0.3 * PPCM);
+  text(" COMPLETE", width/2, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM);
+  /*text(current_vowel , width/2 - 1.3 * PPCM, height/2 + 0.2 * PPCM);
   text(next_vowel , width/2 - 1.3 * PPCM, height/2 + 1.2 * PPCM);
   text(current_consonant , width/2 + 1.3 * PPCM, height/2 + 0.2 * PPCM);
   text(next_consonant , width/2 + 1.3 * PPCM, height/2 + 1.2 * PPCM);
@@ -136,7 +157,7 @@ function draw2Dkeyboard()
   image(upArrow, width/2 - 1.3 * PPCM, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
   image(downArrow, width/2 - 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
   image(upArrow, width/2 + 1.3 * PPCM, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
-  image(downArrow, width/2 + 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6); 
+  image(downArrow, width/2 + 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6); */
 }
 
 // Evoked when the mouse button was pressed
@@ -148,7 +169,7 @@ function mousePressed()
     // Check if mouse click happened within the touch input area
     if(mouseClickWithin(width/2 - 2.0*PPCM, height/2 - 1.0*PPCM, 4.0*PPCM, 3.0*PPCM))  
     {      
-      if (mouseClickWithin(width/2 - (PPCM * 1.3)/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3))
+      /*if (mouseClickWithin(width/2 - (PPCM * 1.3)/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3))
       {
         currently_typed += " ";
       }
@@ -199,7 +220,7 @@ function mousePressed()
       }
       else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 1.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
         currently_typed += next_consonant;
-      }
+      }*/
     }
     
     // Check if mouse click happened within 'ACCEPT' 
