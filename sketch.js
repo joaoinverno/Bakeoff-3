@@ -326,8 +326,12 @@ function mousePressed()
         }
         else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM))
         {
-          position = currently_typed.length;
           currently_typed += " ";
+          position = currently_typed.length;
+        }
+        else if (mouseClickWithin(width/2, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM))
+        {
+          currently_typed += dif;
         }
         else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
         {
