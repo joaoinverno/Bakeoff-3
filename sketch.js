@@ -23,11 +23,15 @@ let ARM_LENGTH, ARM_HEIGHT;    // arm size and position (calculated after enteri
 // Study control parameters (DO NOT CHANGE!)
 let draw_finger_arm  = false;  // used to control what to show in draw()
 let phrases          = [];     // contains all 501 phrases that can be asked of the user
+let mostCommonWords  = [];
 let current_trial    = 0;      // the current trial out of 2 phrases (indexes into phrases array above)
 let attempt          = 0       // the current attempt out of 2 (to account for practice)
 let target_phrase    = "";     // the current target phrase
 let currently_typed  = "";     // what the user has typed so far
+let suggested_word   = "";
 let entered          = new Array(2); // array to store the result of the two trials (i.e., the two phrases entered in one attempt)
+let position         = 0;
+let dif              = "";
 let CPS              = 0;      // add the characters per second (CPS) here (once for every attempt)
 
 // Metrics
@@ -61,6 +65,7 @@ function preload()
     
   // Loads the target phrases (DO NOT CHANGE!)
   phrases = loadStrings("data/phrases.txt");
+  mostCommonWords = loadStrings("data/newlist.txt");
   
   // Loads UI elements for our basic keyboard
   leftArrow = loadImage("data/left.png");
@@ -91,6 +96,7 @@ function draw()
   {
     background(255);           // clear background
     noCursor();                // hides the cursor to simulate the 'fat finger'
+    textPrediction();
     
     drawArmAndWatch();         // draws arm and watch background
     writeTargetAndEntered();   // writes the target and entered phrases above the watch
@@ -103,7 +109,7 @@ function draw()
     textAlign(CENTER); 
     textFont("Arial", 0.32 * PPCM);
     fill(0);
-    text("VOWELS CONSONANTS", width/2, height/2 - 1.3 * PPCM);
+    text(suggested_word, width/2, height/2 - 1.3 * PPCM);
 
     // Draws the touch input area (4x3cm) -- DO NOT CHANGE SIZE!
     stroke(0);
@@ -258,6 +264,23 @@ function draw2Dkeyboard()
   image(downArrow, width/2 + 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6); */
 }
 
+function textPrediction()
+{
+  let comparing = subset(currently_typed, position);
+  let itString = "";
+  for(i = 0; i < 10000; i++)
+    {
+      itString = mostCommonWords[i];
+      let m = match(itString, comparing);
+      dif = splitTokens(itString, m);
+      if(comparing + dif == itString)
+      {
+        suggested_word = itString;
+        break;
+      }
+    }
+}
+
 // Evoked when the mouse button was pressed
 function mousePressed()
 {
@@ -303,6 +326,7 @@ function mousePressed()
         }
         else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM))
         {
+          position = currently_typed.length;
           currently_typed += " ";
         }
         else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
