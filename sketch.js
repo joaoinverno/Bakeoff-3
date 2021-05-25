@@ -50,6 +50,8 @@ let next_vowel = vowels[indexVowels+1];
 let current_consonant = consonants[indexConsonants];
 let next_consonant = consonants[indexConsonants+1];
 
+let current_screen = 0;
+
 // Runs once before the setup() and loads our data (images, phrases)
 function preload()
 {    
@@ -104,7 +106,7 @@ function draw()
     text("VOWELS CONSONANTS", width/2, height/2 - 1.3 * PPCM);
 
     // Draws the touch input area (4x3cm) -- DO NOT CHANGE SIZE!
-    stroke(0, 255, 0);
+    stroke(0);
     noFill();
     rect(width/2 - 2.0*PPCM, height/2 - 1.0*PPCM, 4.0*PPCM, 3.0*PPCM);
 
@@ -143,6 +145,102 @@ function draw2Dkeyboard()
   text(" SPACE", width/2 - 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM);
   textSize(0.3 * PPCM);
   text(" COMPLETE", width/2, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM);
+  imageMode(CORNER);
+  image(backspace, width/2 - 2*PPCM + (4/3)*PPCM*(1/8), height/2 - 1*PPCM + (3/4)*PPCM*(1/8), (4/3)*PPCM*(3/4), (3/4)*PPCM*(3/4));
+
+  if (current_screen != 0)
+  {
+    fill(146, 219, 215);
+    rect(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/10)*PPCM);
+    stroke(0);
+    strokeWeight(2);
+    if (current_screen != 6 && current_screen != 8)
+    {
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      if (current_screen == 1) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" A", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" B", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" C", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+      }
+      else if (current_screen == 2) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" D", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" E", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" F", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+      }
+      else if (current_screen == 3) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" G", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" H", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" I", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+      }
+      else if (current_screen == 4) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" J", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" K", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" L", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+      }
+      else if (current_screen == 5) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" M", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" N", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" O", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+      }
+      else if (current_screen == 7) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" T", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" U", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" V", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+      }
+    }
+    else
+    {
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      if (current_screen == 6) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" P", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" Q", width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" R", width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" S", width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+      }
+      else if (current_screen == 8) {
+        noStroke();
+        fill(0);
+        textSize(0.6*PPCM);
+        textAlign(CENTER, CENTER);
+        text(" W", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" X", width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" Y", width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" Z", width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+      }
+    }
+  }
+
   /*text(current_vowel , width/2 - 1.3 * PPCM, height/2 + 0.2 * PPCM);
   text(next_vowel , width/2 - 1.3 * PPCM, height/2 + 1.2 * PPCM);
   text(current_consonant , width/2 + 1.3 * PPCM, height/2 + 0.2 * PPCM);
@@ -168,7 +266,195 @@ function mousePressed()
   {                   
     // Check if mouse click happened within the touch input area
     if(mouseClickWithin(width/2 - 2.0*PPCM, height/2 - 1.0*PPCM, 4.0*PPCM, 3.0*PPCM))  
-    {      
+    {
+      if (current_screen == 0)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 1;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 2;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 3;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 4;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM + (3/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 5;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 6;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 7;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (8/3)*PPCM, height/2 - 1*PPCM + (6/4)*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          current_screen = 8;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM))
+        {
+          currently_typed += " ";
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
+        {
+          currently_typed = currently_typed.substring(0, currently_typed.length - 1);
+        }
+      }
+      
+      else if (current_screen == 1)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "a";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "b";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "c";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 2)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "d";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "e";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "f";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 3)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "g";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "h";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "i";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 4)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "j";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "k";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "l";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 5)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "m";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "n";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "o";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 6)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "p";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "q";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "r";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "s";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 7)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "t";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "u";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "v";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 8)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "w";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "x";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "y";
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+          currently_typed += "z";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
       /*if (mouseClickWithin(width/2 - (PPCM * 1.3)/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3))
       {
         currently_typed += " ";
