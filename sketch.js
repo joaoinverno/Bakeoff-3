@@ -556,7 +556,7 @@ function mousePressed()
         // Prepares for new trial
         currently_typed = "";
         position = 0;
-        difs = "";
+        dif = "";
         target_phrase = phrases[current_trial];  
       }
       else
