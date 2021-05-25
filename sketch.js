@@ -246,29 +246,13 @@ function draw2Dkeyboard()
       }
     }
   }
-
-  /*text(current_vowel , width/2 - 1.3 * PPCM, height/2 + 0.2 * PPCM);
-  text(next_vowel , width/2 - 1.3 * PPCM, height/2 + 1.2 * PPCM);
-  text(current_consonant , width/2 + 1.3 * PPCM, height/2 + 0.2 * PPCM);
-  text(next_consonant , width/2 + 1.3 * PPCM, height/2 + 1.2 * PPCM);
-  
-  // Draws and the left and right arrow buttons
-  noFill();
-  imageMode(CENTER);
-
-  image(spaceBar, width/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3);
-  image(backspace, width/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9);
-  image(upArrow, width/2 - 1.3 * PPCM, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
-  image(downArrow, width/2 - 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
-  image(upArrow, width/2 + 1.3 * PPCM, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6);
-  image(downArrow, width/2 + 1.3 * PPCM, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6); */
 }
 
 function textPrediction()
 {
   let comparing = subset(currently_typed, position);
   let itString = "";
-  for(i = 0; i < 10000; i++)
+  for(i = 0; i < 99976; i++)
     {
       itString = mostCommonWords[i];
       let m = match(itString, comparing);
@@ -483,58 +467,6 @@ function mousePressed()
         else
           current_screen = 0;
       }
-      /*if (mouseClickWithin(width/2 - (PPCM * 1.3)/2, height/2 + 1.5 * PPCM, PPCM * 1.3, PPCM * 1.3))
-      {
-        currently_typed += " ";
-      }
-      else if (mouseClickWithin(width/2 - (PPCM * 0.9)/2, height/2 + 0.3 * PPCM, PPCM * 0.9, PPCM * 0.9))
-      {
-        currently_typed = currently_typed.substring(0, currently_typed.length - 1);
-      }
-      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.6)/2, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
-      {
-        if (indexVowels == 0) indexVowels = 4;
-        else indexVowels--;
-        current_vowel = vowels[indexVowels];
-        if (indexVowels == 4) next_vowel = 'a';
-        else next_vowel = vowels[indexVowels+1];
-      }
-      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.6)/2, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
-      {
-        if (indexVowels == 4) indexVowels = 0;
-        else indexVowels++;
-        current_vowel = vowels[indexVowels];
-        if (indexVowels == 4) next_vowel = 'a';
-        else next_vowel = vowels[indexVowels+1];
-      }
-      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.6)/2, height/2 - 1 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
-      {
-        if (indexConsonants == 0) indexConsonants = 20;
-        else indexConsonants--;
-        current_consonant = consonants[indexConsonants];
-        if (indexConsonants == 20) next_consonant = 'b';
-        else next_consonant = consonants[indexConsonants+1];
-      }
-      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.6)/2, height/2 + 1.4 * PPCM + 0.3 * PPCM, PPCM * 0.6, PPCM * 0.6))
-      {
-        if (indexConsonants == 20) indexConsonants = 0;
-        else indexConsonants++;
-        current_consonant = consonants[indexConsonants];
-        if (indexConsonants == 20) next_consonant = 'b';
-        else next_consonant = consonants[indexConsonants+1];
-      }
-      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 0.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
-        currently_typed += current_vowel;
-      }
-      else if (mouseClickWithin(width/2 - 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 1.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
-        currently_typed += next_vowel;
-      }
-      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 0.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
-        currently_typed += current_consonant;
-      }
-      else if (mouseClickWithin(width/2 + 1.3 * PPCM - (PPCM * 0.7)/2, height/2 + 1.2 * PPCM - 0.6 * PPCM, PPCM * 0.7, PPCM * 0.7)) {
-        currently_typed += next_consonant;
-      }*/
     }
     
     // Check if mouse click happened within 'ACCEPT' 
@@ -557,6 +489,7 @@ function mousePressed()
         currently_typed = "";
         position = 0;
         dif = "";
+        suggested_word = "";
         target_phrase = phrases[current_trial];  
       }
       else
