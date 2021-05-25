@@ -255,7 +255,7 @@ function textPrediction()
   for(i = 0; i < 99976; i++)
     {
       itString = mostCommonWords[i];
-      if(comparing != "" && comparing[0] == itString[0])
+      if(comparing[0] == itString[0])
       {
         let m = match(itString, comparing);
         dif = splitTokens(itString, m);
