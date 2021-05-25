@@ -590,9 +590,11 @@ function startSecondAttempt()
   letters_expected     = 0;
   letters_entered      = 0;
   errors               = 0;
-  currently_typed      = "";
+  position             = 0;
   CPS                  = 0;
-  
+  currently_typed      = "";
+  suggested_word       = "";
+  dif                  = "";
   current_letter       = 'a';
   
   // Show the watch and keyboard again
