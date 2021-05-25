@@ -255,12 +255,15 @@ function textPrediction()
   for(i = 0; i < 99976; i++)
     {
       itString = mostCommonWords[i];
-      let m = match(itString, comparing);
-      dif = splitTokens(itString, m);
-      if(comparing + dif == itString)
+      if(comparing != "" && comparing[0] == itString[0])
       {
-        suggested_word = itString;
-        break;
+        let m = match(itString, comparing);
+        dif = splitTokens(itString, m);
+        if(comparing + dif == itString)
+        {
+          suggested_word = itString;
+          break;
+        } 
       }
     }
 }
