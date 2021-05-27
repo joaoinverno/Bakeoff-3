@@ -77,6 +77,8 @@ function preload()
   backspace = loadImage("data/backspace.png");
   upArrow = loadImage("data/upArrow.png");
   downArrow = loadImage("data/downArrow.png");
+
+  click = loadSound("sound/click1.wav");
 }
 
 // Runs once at the start
@@ -108,11 +110,11 @@ function draw()
     noStroke();
     fill(125);
     rect(width/2 - 2.0*PPCM, height/2 - 2.0*PPCM, 4.0*PPCM, 1.0*PPCM);
-    textAlign(CENTER); 
-    textFont("Arial", 0.32 * PPCM);
+    textAlign(CENTER, CENTER); 
+    textFont("Arial", 0.4 * PPCM);
     fill(0);
-    text(suggested_word_1, width/2 - PPCM, height/2 - 1.3 * PPCM);
-    text(suggested_word_2, width/2 + PPCM, height/2 - 1.3 * PPCM);
+    text(suggested_word_1, width/2 - 2.0*PPCM, height/2 - 2.0*PPCM, 4.0*PPCM, 0.5*PPCM);
+    text(suggested_word_2, width/2 - 2.0*PPCM, height/2 - 2.0*PPCM + 0.5*PPCM, 4.0*PPCM, 0.5*PPCM);
 
     // Draws the touch input area (4x3cm) -- DO NOT CHANGE SIZE!
     stroke(0);
@@ -163,7 +165,7 @@ function draw2Dkeyboard()
     rect(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/10)*PPCM);
     stroke(0);
     strokeWeight(2);
-    if (current_screen != 6 && current_screen != 8)
+    if (current_screen != 6 && current_screen != 8 && current_screen != 9)
     {
       line(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
       line(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
@@ -221,6 +223,16 @@ function draw2Dkeyboard()
         text(" U", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
         text(" V", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
       }
+    }
+    else if (current_screen == 9)
+    {
+      line(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM);
+      noStroke();
+      fill(0);
+      textSize(0.6*PPCM);
+      textAlign(CENTER, CENTER);
+      text(suggested_word_1, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/20)*PPCM);
+      text(suggested_word_2, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM, (32/10)*PPCM, (24/20)*PPCM);
     }
     else
     {
@@ -297,6 +309,7 @@ function mousePressed()
     {
       if (current_screen == 0)
       {
+        click.play();
         if (mouseClickWithin(width/2 - 2*PPCM + (4/3)*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
         {
           current_screen = 1;
@@ -336,8 +349,7 @@ function mousePressed()
         }
         else if (mouseClickWithin(width/2, height/2 - 1*PPCM + (9/4)*PPCM, (4/2)*PPCM, (3/4)*PPCM))
         {
-          currently_typed += rest1 + " ";
-          position = currently_typed.length;
+          current_screen = 9;
         }
         else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
         {
@@ -484,6 +496,21 @@ function mousePressed()
         }
         else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
           currently_typed += "z";
+          current_screen = 0;
+        }
+        else
+          current_screen = 0;
+      }
+      else if (current_screen == 9)
+      {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/20)*PPCM)) {
+          currently_typed += rest1 + " ";
+          position = currently_typed.length;
+          current_screen = 0;
+        }
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM, (32/10)*PPCM, (24/20)*PPCM)) {
+          currently_typed += rest2 + " ";
+          position = currently_typed.length;
           current_screen = 0;
         }
         else
