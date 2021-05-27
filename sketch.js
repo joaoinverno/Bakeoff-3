@@ -23,15 +23,17 @@ let ARM_LENGTH, ARM_HEIGHT;    // arm size and position (calculated after enteri
 // Study control parameters (DO NOT CHANGE!)
 let draw_finger_arm  = false;  // used to control what to show in draw()
 let phrases          = [];     // contains all 501 phrases that can be asked of the user
-let mostCommonWords  = [];
+let most_common_words  = [];   // contains most used words in english
 let current_trial    = 0;      // the current trial out of 2 phrases (indexes into phrases array above)
 let attempt          = 0       // the current attempt out of 2 (to account for practice)
 let target_phrase    = "";     // the current target phrase
 let currently_typed  = "";     // what the user has typed so far
-let suggested_word   = "";
+let suggested_word_1   = "";   // recommended word number 1
+let suggested_word_2   = "";   // recommended word number 2
+let rest1              = "";   // fill the rest of current word when auto-completing
+let rest2              = "";
 let entered          = new Array(2); // array to store the result of the two trials (i.e., the two phrases entered in one attempt)
 let position         = 0;
-let dif              = "";
 let CPS              = 0;      // add the characters per second (CPS) here (once for every attempt)
 
 // Metrics
@@ -65,7 +67,7 @@ function preload()
     
   // Loads the target phrases (DO NOT CHANGE!)
   phrases = loadStrings("data/phrases.txt");
-  mostCommonWords = loadStrings("data/newlist.txt");
+  most_common_words = loadStrings("data/newlist.txt");
   
   // Loads UI elements for our basic keyboard
   leftArrow = loadImage("data/left.png");
@@ -109,7 +111,8 @@ function draw()
     textAlign(CENTER); 
     textFont("Arial", 0.32 * PPCM);
     fill(0);
-    text(suggested_word, width/2, height/2 - 1.3 * PPCM);
+    text(suggested_word_1, width/2 - PPCM, height/2 - 1.3 * PPCM);
+    text(suggested_word_2, width/2 + PPCM, height/2 - 1.3 * PPCM);
 
     // Draws the touch input area (4x3cm) -- DO NOT CHANGE SIZE!
     stroke(0);
@@ -250,21 +253,36 @@ function draw2Dkeyboard()
 
 function textPrediction()
 {
-  let comparing = subset(currently_typed, position);
   let itString = "";
+  let n_sug = 0;
+  let dif = "";
+  
   for(i = 0; i < 99976; i++)
     {
-      itString = mostCommonWords[i];
-      if(comparing[0] == itString[0])
-      {
-        let m = match(itString, comparing);
-        dif = splitTokens(itString, m);
-        if(comparing + dif == itString)
+      itString = most_common_words[i];
+      for(j = position; j < currently_typed.length; j++)
         {
-          suggested_word = itString;
-          break;
-        } 
-      }
+          if(n_sug == 2) return;
+          if(itString[j-position] != currently_typed[j]) break;
+          if(j == currently_typed.length-1)
+            {
+              if(n_sug == 0)
+                {
+                  suggested_word_1 = itString;
+                  dif = subset(currently_typed, position);
+                  rest1 = subset(itString, dif.length);
+                  n_sug++;
+                }
+              else if(n_sug == 1)
+                {
+                  suggested_word_2 = itString;
+                  dif = subset(currently_typed, position);
+                  rest2 = subset(itString, dif.length);
+                  n_sug++;
+                }
+            }
+        }
+      
     }
 }
 
@@ -490,9 +508,11 @@ function mousePressed()
       {
         // Prepares for new trial
         currently_typed = "";
+        rest1 = "";
+        rest2 = "";
+        suggested_word_1 = "";
+        suggested_word_2 = "";
         position = 0;
-        dif = "";
-        suggested_word = "";
         target_phrase = phrases[current_trial];  
       }
       else
@@ -531,8 +551,10 @@ function startSecondAttempt()
   position             = 0;
   CPS                  = 0;
   currently_typed      = "";
-  suggested_word       = "";
-  dif                  = "";
+  rest1                = "";
+  rest2                = "";
+  suggested_word_1     = "";
+  suggested_word_2     = "";
   current_letter       = 'a';
   
   // Show the watch and keyboard again
