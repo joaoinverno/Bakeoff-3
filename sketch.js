@@ -236,7 +236,7 @@ function draw2Dkeyboard()
       line(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM);
       noStroke();
       fill(0);
-      textSize(0.6*PPCM);
+      textSize(0.5*PPCM);
       textAlign(CENTER, CENTER);
       text(suggested_word_1, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (48/50)*PPCM);
       text(suggested_word_2, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM, (32/10)*PPCM, (48/50)*PPCM);
