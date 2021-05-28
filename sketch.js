@@ -315,6 +315,7 @@ function positionWhenDelete()
       position = it+1;
       return;
     }
+    it--;
   }
   position = 0;
 }
