@@ -118,6 +118,7 @@ function draw()
 
     // Draws the touch input area (4x3cm) -- DO NOT CHANGE SIZE!
     stroke(0);
+    strokeWeight(4);
     noFill();
     rect(width/2 - 2.0*PPCM, height/2 - 1.0*PPCM, 4.0*PPCM, 3.0*PPCM);
 
@@ -162,102 +163,108 @@ function draw2Dkeyboard()
   if (current_screen != 0)
   {
     fill(146, 219, 215);
-    rect(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/10)*PPCM);
+    rect(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (96/50)*PPCM);
+    fill(255, 98, 98);
+    rect(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM, (32/10)*PPCM, (39/50)*PPCM);
+    fill(0);
+    textSize(0.7*PPCM);
+    text(" x", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM, (32/10)*PPCM, (39/50)*PPCM);
     stroke(0);
     strokeWeight(2);
+    line(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM);
     if (current_screen != 6 && current_screen != 8 && current_screen != 9)
     {
-      line(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
-      line(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM);
       if (current_screen == 1) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" A", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" B", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" C", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" A", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" B", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" C", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
       }
       else if (current_screen == 2) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" D", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" E", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" F", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" D", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" E", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" F", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
       }
       else if (current_screen == 3) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" G", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" H", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" I", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" G", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" H", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" I", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
       }
       else if (current_screen == 4) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" J", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" K", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" L", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" J", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" K", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" L", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
       }
       else if (current_screen == 5) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" M", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" N", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" O", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" M", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" N", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" O", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
       }
       else if (current_screen == 7) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" T", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" U", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
-        text(" V", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM);
+        text(" T", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" U", width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
+        text(" V", width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM);
       }
     }
     else if (current_screen == 9)
     {
-      line(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM);
       noStroke();
       fill(0);
       textSize(0.6*PPCM);
       textAlign(CENTER, CENTER);
-      text(suggested_word_1, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/20)*PPCM);
-      text(suggested_word_2, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM, (32/10)*PPCM, (24/20)*PPCM);
+      text(suggested_word_1, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (48/50)*PPCM);
+      text(suggested_word_2, width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM, (32/10)*PPCM, (48/50)*PPCM);
     }
     else
     {
-      line(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
-      line(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
-      line(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/10)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM);
+      line(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (96/50)*PPCM);
       if (current_screen == 6) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" P", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
-        text(" Q", width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
-        text(" R", width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
-        text(" S", width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" P", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
+        text(" Q", width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
+        text(" R", width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
+        text(" S", width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
       }
       else if (current_screen == 8) {
         noStroke();
         fill(0);
         textSize(0.6*PPCM);
         textAlign(CENTER, CENTER);
-        text(" W", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
-        text(" X", width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
-        text(" Y", width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
-        text(" Z", width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM);
+        text(" W", width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
+        text(" X", width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
+        text(" Y", width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
+        text(" Z", width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM);
       }
     }
   }
@@ -359,15 +366,15 @@ function mousePressed()
       
       else if (current_screen == 1)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "a";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "b";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "c";
           current_screen = 0;
         }
@@ -376,15 +383,15 @@ function mousePressed()
       }
       else if (current_screen == 2)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "d";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "e";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "f";
           current_screen = 0;
         }
@@ -393,15 +400,15 @@ function mousePressed()
       }
       else if (current_screen == 3)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "g";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "h";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "i";
           current_screen = 0;
         }
@@ -410,15 +417,15 @@ function mousePressed()
       }
       else if (current_screen == 4)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "j";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "k";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "l";
           current_screen = 0;
         }
@@ -427,15 +434,15 @@ function mousePressed()
       }
       else if (current_screen == 5)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "m";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "n";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "o";
           current_screen = 0;
         }
@@ -444,19 +451,19 @@ function mousePressed()
       }
       else if (current_screen == 6)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "p";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "q";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "r";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "s";
           current_screen = 0;
         }
@@ -465,15 +472,15 @@ function mousePressed()
       }
       else if (current_screen == 7)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "t";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "u";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/30)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/30)*PPCM, (96/50)*PPCM)) {
           currently_typed += "v";
           current_screen = 0;
         }
@@ -482,19 +489,19 @@ function mousePressed()
       }
       else if (current_screen == 8)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "w";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (32/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "x";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (64/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "y";
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (24/10)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM + (96/40)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/40)*PPCM, (96/50)*PPCM)) {
           currently_typed += "z";
           current_screen = 0;
         }
@@ -503,12 +510,12 @@ function mousePressed()
       }
       else if (current_screen == 9)
       {
-        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (24/20)*PPCM)) {
+        if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM, (32/10)*PPCM, (48/50)*PPCM)) {
           currently_typed += rest1 + " ";
           position = currently_typed.length;
           current_screen = 0;
         }
-        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (24/20)*PPCM, (32/10)*PPCM, (24/20)*PPCM)) {
+        else if (mouseClickWithin(width/2 - 2*PPCM + (4/10)*PPCM, height/2 - 1*PPCM + (3/10)*PPCM + (48/50)*PPCM, (32/10)*PPCM, (48/50)*PPCM)) {
           currently_typed += rest2 + " ";
           position = currently_typed.length;
           current_screen = 0;
