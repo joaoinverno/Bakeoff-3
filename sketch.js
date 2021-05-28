@@ -305,6 +305,20 @@ function textPrediction()
     }
 }
 
+function positionWhenDelete()
+{
+  let it = currently_typed.length-1;
+  while(it > 0)
+  {
+    if (currently_typed[it] == " ")
+    {
+      position = it+1;
+      return;
+    }
+  }
+  position = 0;
+}
+
 // Evoked when the mouse button was pressed
 function mousePressed()
 {
@@ -361,6 +375,7 @@ function mousePressed()
         else if (mouseClickWithin(width/2 - 2*PPCM, height/2 - 1*PPCM, (4/3)*PPCM, (3/4)*PPCM))
         {
           currently_typed = currently_typed.substring(0, currently_typed.length - 1);
+          positionWhenDelete();
         }
       }
       
