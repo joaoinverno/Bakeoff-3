@@ -112,7 +112,6 @@ email
 two
 health
 world
-re
 next
 used
 go
@@ -174,7 +173,6 @@ need
 many
 user
 said
-de
 does
 set
 under
@@ -429,7 +427,6 @@ estate
 box
 conditions
 select
-windows
 photos
 gay
 thread
@@ -468,7 +465,6 @@ cost
 movie
 forums
 march
-la
 september
 better
 say
@@ -480,7 +476,6 @@ medical
 test
 friend
 come
-dec
 server
 pc
 study
@@ -553,7 +548,6 @@ few
 east
 paper
 single
-ii
 age
 activities
 club
@@ -568,10 +562,8 @@ gift
 question
 changes
 night
-ca
 hard
 texas
-oct
 pay
 four
 poker
@@ -714,9 +706,7 @@ drive
 specific
 several
 gold
-feb
 living
-sep
 collection
 called
 short
@@ -745,7 +735,6 @@ database
 says
 official
 weather
-mar
 land
 average
 done
@@ -761,7 +750,6 @@ microsoft
 conference
 environment
 records
-st
 district
 calendar
 costs
@@ -771,7 +759,6 @@ front
 statement
 update
 parts
-aug
 ever
 downloads
 early
@@ -787,7 +774,6 @@ word
 works
 material
 bill
-apr
 written
 talk
 federal
@@ -835,7 +821,6 @@ tech
 meet
 far
 economic
-en
 player
 projects
 lyrics
@@ -856,7 +841,6 @@ deals
 various
 words
 linux
-jul
 production
 commercial
 james
@@ -874,7 +858,6 @@ knowledge
 magazine
 error
 camera
-jun
 girl
 currently
 construction
@@ -58104,7 +58087,6 @@ yersinia
 warthog
 vetting
 fifi
-windowsxp
 spel
 radnor
 frum
