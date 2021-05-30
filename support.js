@@ -111,7 +111,7 @@ function drawArmAndWatch()
 function writeTargetAndEntered()
 {
   textAlign(LEFT);
-  textFont("Arial", 24);
+  textFont("Arial", 0.6 * PPCM);
   fill(100);
   text("Phrase " + (current_trial + 1) + " of " + 2, width/2 - 4.0*PPCM, height/2 - 8.1*PPCM);   
   text("Target:    " + target_phrase, width/2 - 4.0*PPCM, height/2 - 7.1*PPCM);
@@ -123,7 +123,7 @@ function writeTargetAndEntered()
 function drawACCEPT()
 {
   textAlign(CENTER);
-  textFont("Arial", 24);
+  textFont("Arial", 0.6 * PPCM);
   noStroke();
   fill(0, 250, 0);
   rect(width/2 - 2*PPCM, height/2 - 5.1*PPCM, 4.0*PPCM, 2.0*PPCM);
