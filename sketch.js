@@ -28,8 +28,8 @@ let current_trial    = 0;      // the current trial out of 2 phrases (indexes in
 let attempt          = 0       // the current attempt out of 2 (to account for practice)
 let target_phrase    = "";     // the current target phrase
 let currently_typed  = "";     // what the user has typed so far
-let suggested_word_1   = "";   // recommended word number 1
-let suggested_word_2   = "";   // recommended word number 2
+let suggested_word_1   = "the";   // recommended word number 1
+let suggested_word_2   = "of";   // recommended word number 2
 let rest1              = "";   // fill the rest of current word when auto-completing
 let rest2              = "";
 let entered          = new Array(2); // array to store the result of the two trials (i.e., the two phrases entered in one attempt)
@@ -561,8 +561,8 @@ function mousePressed()
         currently_typed = "";
         rest1 = "";
         rest2 = "";
-        suggested_word_1 = "";
-        suggested_word_2 = "";
+        suggested_word_1 = "the";
+        suggested_word_2 = "of";
         position = 0;
         target_phrase = phrases[current_trial];  
       }
@@ -604,8 +604,8 @@ function startSecondAttempt()
   currently_typed      = "";
   rest1                = "";
   rest2                = "";
-  suggested_word_1     = "";
-  suggested_word_2     = "";
+  suggested_word_1     = "the";
+  suggested_word_2     = "of";
   current_letter       = 'a';
   
   // Show the watch and keyboard again
