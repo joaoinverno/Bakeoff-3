@@ -304,6 +304,8 @@ function textPrediction()
     }
   suggested_word_1 = "the";
   suggested_word_2 = "of";
+  rest1 = "the";
+  rest2 = "of";
 }
 
 function positionWhenDelete()
