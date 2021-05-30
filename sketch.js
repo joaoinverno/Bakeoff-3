@@ -276,7 +276,7 @@ function textPrediction()
   let n_sug = 0;
   let dif = "";
   
-  for(i = 0; i < 99976; i++)
+  for(i = 0; i < 9958; i++)
     {
       itString = most_common_words[i];
       for(j = position; j < currently_typed.length; j++)
@@ -301,8 +301,9 @@ function textPrediction()
                 }
             }
         }
-      
     }
+  suggested_word_1 = "the";
+  suggested_word_2 = "of";
 }
 
 function positionWhenDelete()
@@ -561,8 +562,8 @@ function mousePressed()
         currently_typed = "";
         rest1 = "";
         rest2 = "";
-        suggested_word_1 = "";
-        suggested_word_2 = "";
+        suggested_word_1 = "the";
+        suggested_word_2 = "of";
         position = 0;
         target_phrase = phrases[current_trial];  
       }
@@ -604,8 +605,8 @@ function startSecondAttempt()
   currently_typed      = "";
   rest1                = "";
   rest2                = "";
-  suggested_word_1     = "";
-  suggested_word_2     = "";
+  suggested_word_1     = "the";
+  suggested_word_2     = "of";
   current_letter       = 'a';
   
   // Show the watch and keyboard again
