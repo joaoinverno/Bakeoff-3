@@ -30,10 +30,10 @@ let target_phrase    = "";     // the current target phrase
 let currently_typed  = "";     // what the user has typed so far
 let suggested_word_1   = "the";   // recommended word number 1
 let suggested_word_2   = "of";   // recommended word number 2
-let rest1              = "the";   // fill the rest of current word when auto-completing
-let rest2              = "of";
+let rest1              = "the";   // fill the rest of recommended word 1 when auto-completing
+let rest2              = "of";    // fill the rest of recommended word 2 when auto-completing
 let entered          = new Array(2); // array to store the result of the two trials (i.e., the two phrases entered in one attempt)
-let position         = 0;
+let position         = 0;      // position of the first letter in current word
 let CPS              = 0;      // add the characters per second (CPS) here (once for every attempt)
 
 // Metrics
@@ -45,16 +45,7 @@ let errors           = 0;      // a running total of the number of errors (when 
 let database;                  // Firebase DB
 
 // 2D Keyboard UI
-let leftArrow, rightArrow, spaceBar, backspace, upArrow, downArrow;     // holds the left and right UI images for our basic 2D keyboard   
-let ARROW_SIZE;                // UI button size
-let vowels = "aeiou";
-let consonants = "bcdfghjklmnpqrstvwxyz";
-let indexVowels = 0;
-let indexConsonants = 0;
-let current_vowel = vowels[indexVowels];
-let next_vowel = vowels[indexVowels+1];
-let current_consonant = consonants[indexConsonants];
-let next_consonant = consonants[indexConsonants+1];
+let backspace;     // holds the backspace image   
 
 let current_screen = 0;
 
@@ -69,14 +60,8 @@ function preload()
   phrases = loadStrings("data/phrases.txt");
   most_common_words = loadStrings("data/newlist.txt");
   
-  // Loads UI elements for our basic keyboard
-  leftArrow = loadImage("data/left.png");
-  rightArrow = loadImage("data/right.png");
-
-  spaceBar = loadImage("data/space-bar-1.png");
+  // Loads UI elements for the basic keyboard
   backspace = loadImage("data/backspace.png");
-  upArrow = loadImage("data/upArrow.png");
-  downArrow = loadImage("data/downArrow.png");
 
   click = loadSound("sound/click1.wav");
 }
@@ -100,7 +85,7 @@ function draw()
   {
     background(255);           // clear background
     noCursor();                // hides the cursor to simulate the 'fat finger'
-    textPrediction();
+    textPrediction();          // updates recommended words
     
     drawArmAndWatch();         // draws arm and watch background
     writeTargetAndEntered();   // writes the target and entered phrases above the watch
@@ -128,10 +113,9 @@ function draw()
   }
 }
 
-// Draws 2D keyboard UI (current letter and left and right arrows)
+// Draws 2D keyboard UI 
 function draw2Dkeyboard()
 {
-
   noStroke();
   stroke(0);
   strokeWeight(4);
@@ -270,11 +254,12 @@ function draw2Dkeyboard()
   }
 }
 
+// Looks for the words to recommend 
 function textPrediction()
 {
   let itString = "";
-  let n_sug = 0;
   let dif = "";
+  let n_sug = 0;
   
   for(i = 0; i < 99958; i++)
     {
@@ -308,6 +293,7 @@ function textPrediction()
   rest2 = "of";
 }
 
+// Updates value of position when something is deleted
 function positionWhenDelete()
 {
   let it = currently_typed.length-1;
@@ -697,8 +683,6 @@ function windowResized()
   FINGER_OFFSET = (int)(0.8  * PPCM)
   ARM_LENGTH    = (int)(19   * PPCM);
   ARM_HEIGHT    = (int)(11.2 * PPCM);
-  
-  ARROW_SIZE    = (int)(2.2 * PPCM);
   
   // Starts drawing the watch immediately after we go fullscreen (DO NO CHANGE THIS!)
   draw_finger_arm = true;
